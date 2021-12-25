@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace myFirstProject.Models
 {
@@ -13,6 +14,8 @@ namespace myFirstProject.Models
 
         //Relationships
 
-        public List<Movie>? Movies { get; set;}  
+        public List<Movie>? Movies { get; set;}
+
+      
     }
 }
