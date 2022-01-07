@@ -8,8 +8,13 @@ namespace myFirstProject.Models
         [Key]
         public int ActorId { get; set; }
 
+        [Display(Name = "PROFILE PICTURE")]
         public string? ProfilePictureURL { get; set; }
+
+        [Display(Name = "FULL NAME")]
         public string? FullName { get; set; }
+
+        [Display(Name = "BIO")]
         public string? Bio { get; set; }
 
         //Relationships
