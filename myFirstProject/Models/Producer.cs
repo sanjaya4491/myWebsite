@@ -14,7 +14,7 @@ namespace myFirstProject.Models
         [Display(Name = "FULL NAME")]
         public string? FullName { get; set; }
 
-        [Display(Name = "BIO")]
+        [Display(Name = "BIOGRAPHY")]
         public string? Bio { get; set; }
 
         //Relationships
