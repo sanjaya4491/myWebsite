@@ -13,7 +13,7 @@
         <table class = "table">
 
             <thead>
-                <tr class= "text-center">
+                <tr>
                     <th>@Html.DisplayNameFor(model => model.ProfilePictureURL)</th>
                     <th>@Html.DisplayNameFor(model => model.FullName)</th>
                     <th>@Html.DisplayNameFor(model => model.Bio)</th>
@@ -25,7 +25,7 @@
                 @foreach (var item in Model)
                 {
                     <tr>
-                        <td class = "align-middle">
+                        <td >
                             <img class= "rounded-circle" src="@Html.Raw(item.ProfilePictureURL)" alt="@item.FullName" style="max-width:150px"/>
                         </td>
                         <td class = "align-middle">
