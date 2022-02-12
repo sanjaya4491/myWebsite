@@ -162,8 +162,8 @@ namespace myFirstProject.Data
 
                         },
                           new Movie(){
-                            Name ="movie 2",
-                                  Description ="IDK descrp for movie",
+                            Name ="movie 3",
+                            Description ="IDK descrp for movie",
                             Price = 99,
                             ImgURL = "TODO movie pic",
                             StartDate = DateTime.Now.AddDays(2),
@@ -174,7 +174,7 @@ namespace myFirstProject.Data
 
                         },
                             new Movie(){
-                                Name ="movie 3",
+                                Name ="movie 4",
                                 Description ="IDK descrp for movie",
                                 Price = 99,
                                 ImgURL = "TODO movie pic",
@@ -186,7 +186,7 @@ namespace myFirstProject.Data
 
                         },
                             new Movie(){
-                                Name ="movie 4",
+                                Name ="movie 5",
                                 Description ="IDK descrp for movie",
                                 Price = 99,
                                 ImgURL = "TODO movie pic",
