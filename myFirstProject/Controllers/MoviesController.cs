@@ -14,7 +14,7 @@ namespace myFirstProject.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var allMovies = await _context.Movies.ToListAsync();
+            var allMovies = await _context.Movies. Include(n=>n.Cinema).ToListAsync();
             return View(allMovies);
         }
     }
