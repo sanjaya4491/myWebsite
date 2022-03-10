@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using myFirstProject.Data;
+using myFirstProject.Data.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -7,6 +8,10 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 // DbContext configuration
 builder.Services.AddDbContext<AppDbContext>(options => options.UseMySQL(builder.Configuration.GetConnectionString("DefaultConnectionString")));
+
+// Services Configuration
+builder.Services.AddScoped<IActorsService, ActorService>();
+
 
 var app = builder.Build();
 
