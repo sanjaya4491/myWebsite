@@ -1,5 +1,4 @@
 ﻿using myFirstProject.Models;
-using Microsoft.AspNetCore.Builder;
 
 namespace myFirstProject.Data
 {
@@ -7,17 +6,17 @@ namespace myFirstProject.Data
     {
         public static void Seed(IApplicationBuilder applicationBuilder)
         {
-            using (var serviceScope = applicationBuilder.ApplicationServices.CreateScope())
+            using var serviceScope = applicationBuilder.ApplicationServices.CreateScope();
+            var context = serviceScope.ServiceProvider.GetService<AppDbContext>();
+            if (context == null) throw new Exception("Context IS NULL");
+            else context.Database.EnsureCreated();
+
+
+
+            //Cinema
+            if (!context.Cinemas.Any())
             {
-                var context = serviceScope.ServiceProvider.GetService<AppDbContext>();
-                context.Database.EnsureCreated();
-
-
-
-                //Cinema
-                if (!context.Cinemas.Any())
-                {
-                    context.Cinemas.AddRange(new List<Cinema>() {
+                context.Cinemas.AddRange(new List<Cinema>() {
                         new Cinema()
                         {
                             Name = "Cinema 1",
@@ -49,14 +48,14 @@ namespace myFirstProject.Data
                             Description = "I don't know this is the first description"
                         }
                     });
-                    context.SaveChanges();
-                }
+                context.SaveChanges();
+            }
 
-                //Actors
-                if (!context.Actors.Any())
-                {
+            //Actors
+            if (!context.Actors.Any())
+            {
 
-                    context.Actors.AddRange(new List<Actor>() {
+                context.Actors.AddRange(new List<Actor>() {
                         new Actor()
                         {
                             FullName = "Actor 1",
@@ -89,15 +88,15 @@ namespace myFirstProject.Data
                         }
                     });
 
-                    context.SaveChanges();
+                context.SaveChanges();
 
-                }
+            }
 
-                // Producers
+            // Producers
 
-                if (!context.Producers.Any())
-                {
-                    context.Producers.AddRange(new List<Producer>()
+            if (!context.Producers.Any())
+            {
+                context.Producers.AddRange(new List<Producer>()
                     {
                         new Producer(){
                             FullName = "producer 1",
@@ -127,14 +126,14 @@ namespace myFirstProject.Data
 
                     });
 
-                    context.SaveChanges();
-                }
+                context.SaveChanges();
+            }
 
-                // Movies
+            // Movies
 
-                if (!context.Movies.Any())
-                {
-                    context.Movies.AddRange(new List<Movie>() {
+            if (!context.Movies.Any())
+            {
+                context.Movies.AddRange(new List<Movie>() {
 
                         new Movie(){
                             Name ="movie 1",
@@ -201,14 +200,14 @@ namespace myFirstProject.Data
 
                     });
 
-                    context.SaveChanges();
-                }
+                context.SaveChanges();
+            }
 
-                // Actors && Movies
+            // Actors && Movies
 
-                if (context.Actor_Movies.Any())
-                {
-                    context.Actor_Movies.AddRange(new List<Actor_Movie>() {
+            if (context.Actor_Movies.Any())
+            {
+                context.Actor_Movies.AddRange(new List<Actor_Movie>() {
                         new Actor_Movie(){
                             ActorId = 1,
                             MovieId = 1,
@@ -227,9 +226,7 @@ namespace myFirstProject.Data
                         },
                     });
 
-                    context.SaveChanges();
-                }
-
+                context.SaveChanges();
             }
         }
     }
