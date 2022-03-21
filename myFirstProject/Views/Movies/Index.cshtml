@@ -34,8 +34,8 @@
                            <p class = "card-text">@item.Description </p>
                            <p class = "card-text"><b>Cinema: </b>@item.Name</p>
                            <p class = "card-text"><b>Category: </b>@item.MovieCategory</p>
-                           <p class = "card-text"><b>Start Date: </b>@item.StartDate.Value.ToString("dd MMM yyyy")</p>
-                           <p class = "card-text"><b>End Date: </b>@item.EndDate.Value.ToString("dd MMM yyyy")</p>
+                           <p class = "card-text"><b>Start Date: </b>@item.?StartDate.Value.ToString("dd MMM yyyy")</p>
+                           <p class = "card-text"><b>End Date: </b>@item.?EndDate.Value.ToString("dd MMM yyyy")</p>
                            <p class = "card-text">
                                <b>Status:</b>
                                 @if (DateTime.Now >= @item.StartDate && DateTime.Now <= @item.EndDate)

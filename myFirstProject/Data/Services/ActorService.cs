@@ -1,5 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using myFirstProject.Models;
+using System.Collections.Generic;
+using System;
 
 namespace myFirstProject.Data.Services
 {
@@ -12,10 +14,11 @@ namespace myFirstProject.Data.Services
             _context = context;
         }
 
-
-        public void Add(Actor actor)
+        public async Task AddAsync(Actor actor)
         {
-            throw new NotImplementedException();
+            await _context.Actors.AddAsync(actor);
+            await _context.SaveChangesAsync();
+            
         }
 
         public void Delete(int id)
@@ -23,20 +26,27 @@ namespace myFirstProject.Data.Services
             throw new NotImplementedException();
         }
 
-        public async Task<IEnumerable<Actor>> GetAll()
+        public async Task<IEnumerable<Actor>> GetAllAsync()
         {
             var result = await _context.Actors.ToListAsync();
             return result;
         }
 
-        public Actor GetById(int id)
+        public async Task<Actor> GetByIdAsync(int id)
         {
-            throw new NotImplementedException();
+            var result = await _context.Actors.FirstOrDefaultAsync(n => n.ActorId == id);
+            if (result != null)
+                return result;
+            else throw new ArgumentException("No Such id found") ;
         }
 
-        public Actor Update(int id, Actor newActor)
+        public async Task<Actor> UpdateAsync(int id, Actor newActor)
         {
-            throw new NotImplementedException();
+            _context.Update(newActor);
+            await _context.SaveChangesAsync();
+            return newActor;
         }
+
+       
     }
 }
