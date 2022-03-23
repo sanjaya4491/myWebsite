@@ -10,7 +10,7 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<AppDbContext>(options => options.UseMySQL(builder.Configuration.GetConnectionString("DefaultConnectionString")));
 
 // Services Configuration
-builder.Services.AddScoped<IActorsService, ActorService>();
+builder.Services.AddScoped<IActorsService, ActorsService>();
 
 
 var app = builder.Build();

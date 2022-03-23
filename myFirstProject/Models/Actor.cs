@@ -5,7 +5,7 @@ namespace myFirstProject.Models
     public class Actor
     {
         [Key]
-        public int ActorId { get; set; }
+        public int Id { get; set; }
 
         [Display(Name = "PROFILE PICTURE")]
         [Required(ErrorMessage = "Profile Picture Required")]
