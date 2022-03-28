@@ -1,8 +1,9 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using myFirstProject.Data.Base;
+using System.ComponentModel.DataAnnotations;
 
 namespace myFirstProject.Models
 {
-    public class Cinema
+    public class Cinema : IEntityBase
     {
         [Key]
         public int Id { get; set; }
@@ -10,11 +11,11 @@ namespace myFirstProject.Models
         [Display(Name = "Logo")]
         public string? Logo { get; set; }
 
-        [Display(Name="Name of the Cinema")]
+        [Display(Name = "Name of the Cinema")]
         public string? Name { get; set; }
 
         [Display(Name = "Description")]
         public string? Description { get; set; }
-        
+
     }
 }

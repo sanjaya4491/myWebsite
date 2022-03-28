@@ -1,9 +1,9 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using myFirstProject.Data.Base;
+using System.ComponentModel.DataAnnotations;
 
 namespace myFirstProject.Models
 {
-    public class Producer
+    public class Producer : IEntityBase
     {
         [Key]
         public int Id { get; set; }
@@ -19,8 +19,8 @@ namespace myFirstProject.Models
 
         //Relationships
 
-        public List<Movie>? Movies { get; set;}
+        public List<Movie>? Movies { get; set; }
 
-      
+
     }
 }

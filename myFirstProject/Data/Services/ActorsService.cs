@@ -7,9 +7,9 @@ using myFirstProject.Data.Base;
 
 namespace myFirstProject.Data.Services
 {
-    public class ActorService : EntityBaseRepository<Actor>, IActorsService
+    public class ActorsService : EntityBaseRepository<Actor>, IActorsService
     {
-        public ActorService(AppDbContext context) : base(context)
+        public ActorsService(AppDbContext context) : base(context)
         {
         }
     }

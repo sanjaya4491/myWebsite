@@ -1,7 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using myFirstProject.Data;
 using myFirstProject.Data.Services;
-using System.Threading.Tasks;
 using myFirstProject.Models;
 
 namespace myFirstProject.Controllers
@@ -10,7 +8,8 @@ namespace myFirstProject.Controllers
     {
         private readonly IActorsService _service;
 
-        public ActorsController(IActorsService service) {
+        public ActorsController(IActorsService service)
+        {
             _service = service;
         }
 
@@ -41,9 +40,10 @@ namespace myFirstProject.Controllers
 
         //Get:: Actors/Details/1
 
-        public async Task<IActionResult> Details(int id) {
+        public async Task<IActionResult> Details(int id)
+        {
             var actorDetails = await _service.GetByIdAsync(id);
-            if (actorDetails == null) return View("Not found"); 
+            if (actorDetails == null) return View("Not found");
             return View(actorDetails);
         }
 
@@ -91,4 +91,3 @@ namespace myFirstProject.Controllers
 
     }
 }
-                              

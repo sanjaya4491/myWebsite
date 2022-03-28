@@ -1,10 +1,11 @@
 ﻿using myFirstProject.Data;
+using myFirstProject.Data.Base;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace myFirstProject.Models
 {
-    public class Movie
+    public class Movie: IEntityBase
     {
         [Key]
         public int Id { get; set; }
