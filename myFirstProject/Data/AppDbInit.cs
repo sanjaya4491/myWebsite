@@ -26,25 +26,25 @@ namespace myFirstProject.Data
                         new Cinema()
                         {
                             Name = "Cinema 2",
-                            Logo = "",
+                            Logo = "http://dotnethow.net/images/actors/actor-1.jpeg",
                             Description = "I don't know this is the first description"
                         },
                         new Cinema()
                         {
                             Name = "Cinema 3",
-                            Logo = "",
+                            Logo = "http://dotnethow.net/images/actors/actor-1.jpeg",
                             Description = "I don't know this is the first description"
                         },
                         new Cinema()
                         {
                             Name = "Cinema 4",
-                            Logo = "",
+                            Logo = "http://dotnethow.net/images/actors/actor-1.jpeg",
                             Description = "I don't know this is the first description"
                         },
                         new Cinema()
                         {
                             Name = "Cinema 5",
-                            Logo = "",
+                            Logo = "http://dotnethow.net/images/actors/actor-1.jpeg",
                             Description = "I don't know this is the first description"
                         }
                     });

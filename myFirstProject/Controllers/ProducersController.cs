@@ -1,24 +1,90 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using myFirstProject.Data;
+using myFirstProject.Data.Services;
+using myFirstProject.Models;
 
 namespace myFirstProject.Controllers
 {
     public class ProducersController : Controller
     {
 
-        private readonly AppDbContext _context;
+        private readonly IProducersService _service;
 
-        public ProducersController(AppDbContext context)
+        public ProducersController(IProducersService service)
         {
-            _context = context;
+            _service = service;
+        }
+
+        //shows the index view
+        public async Task<IActionResult> Index()
+        {
+            var allProducers = await _service.GetAllAsync();
+            return View(allProducers);
+        }
+
+        //get: Actors/Create
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Create([Bind("FullName,ProfilePictureURL,Bio")] Producer producers)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(producers);
+            }
+            await _service.AddAsync(producers);
+            return RedirectToAction("Index");
+        }
+
+        //get: Actors/Delete/1
+
+        public async Task<IActionResult> Delete(int id)
+        {
+            var actorDetails = await _service.GetByIdAsync(id);
+            if (actorDetails == null) return View("Not found");
+            return View(actorDetails);
+        }
+
+        [HttpPost, ActionName("Delete")]
+        public async Task<IActionResult> DeleteConfirmed(int id)
+        {
+            var actorDetails = await _service.GetByIdAsync(id);
+            if (actorDetails == null) return View("Not found");
+
+            await _service.DeleteAsync(id);
+            return RedirectToAction(nameof(Index));
+        }
+
+        // Edit: Producers/Edit/1
+
+        public async Task<IActionResult> Edit(int id)
+        {
+            var actorDetails = await _service.GetByIdAsync(id);
+            if (actorDetails == null) return View("Not found");
+            return View(actorDetails);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(int id, Producer producers)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(producers);
+            }
+            await _service.UpdateAsync(id, producers);
+            return RedirectToAction(nameof(Index));
         }
 
 
-        public async Task<IActionResult> Index()
+        // Get Details/1
+
+        public async Task<IActionResult> Details(int id)
         {
-            var allProducers = await _context.Producers.ToListAsync();
-            return View(allProducers);
+            var producerDetails = await _service.GetByIdAsync(id);
+            if (producerDetails == null) return View("ErrorViewModel");
+            return View(producerDetails);
         }
     }
 }

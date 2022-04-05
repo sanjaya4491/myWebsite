@@ -50,9 +50,7 @@ namespace myFirstProject.Data.Base
         public async Task<T> GetByIdAsync(int id)
         {
             var entity =  await _context.Set<T>().FirstOrDefaultAsync(n => n.Id == id);
-            if (entity == null) { 
-             throw new NullReferenceException("Id is null");
-            }
+           
             return entity;
         }
         public async Task<T> GetByIdAsync(int id, params Expression<Func<T, object>>[] includeProperties)
